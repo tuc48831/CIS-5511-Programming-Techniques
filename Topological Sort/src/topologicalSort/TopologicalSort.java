@@ -20,9 +20,9 @@ public class TopologicalSort {
     private int numPrint;
     private int[] countArray;
     public int numPerms;
-    private LinkedList[] succArray;
-    private LinkedList output;
-    private LinkedList bag; //I chose a linked list for the bag as it is O(c) for checking if it's empty, and inserting/removing items to the head and tail
+    private LinkedList<Integer>[] succArray;
+    private LinkedList<Integer> output;
+    private LinkedList<Integer> bag; //I chose a linked list for the bag as it is O(c) for checking if it's empty, and inserting/removing items to the head and tail
     
     public TopologicalSort(String input){ //an initializer that takes a string of input and sets up the problem
         String[] lines = input.split("\n"); //convert the line seperated input into arrays
@@ -63,7 +63,7 @@ public class TopologicalSort {
         }else{
             Node temp = succArray[vertNum].head; //temp node
             while(temp != null){    //traverse the linked list
-                int store = (int)temp.getElement(); //capture the nodes from the list
+                int store = (int)temp.getNumber(); //capture the nodes from the list
                 countArray[store]--;    //decrement their countArray entry
                 if(countArray[store] == 0){ //if their countArray entry went to 0
                     //System.out.println(store + ": added to bag");
@@ -82,7 +82,7 @@ public class TopologicalSort {
         }else{  //else
             Node temp = succArray[vertNum].head; //temp to iterate
             while(temp != null){ //iterate over the list
-                int store = (int)temp.getElement(); //capture the node from the linked list
+                int store = (int)temp.getNumber(); //capture the node from the linked list
                 countArray[store]++;            //increment their countArray entry
                 temp = temp.getNext();               //move on to the next
             }
@@ -180,8 +180,5 @@ public class TopologicalSort {
         System.out.println("initialized four");
         four.topsorts();
         System.out.println("ran four, total number of permutations: " + four.numPerms);
-        
-        
     }
-    
 }

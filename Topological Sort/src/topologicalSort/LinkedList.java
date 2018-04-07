@@ -11,10 +11,10 @@ package topologicalSort;
  * I AM JUST RE-USING IT
  * I WILL MAKE SURE TO RE-FAMILIARIZE MYSELF/COMMENT IT RELEVANT TO THIS ASSIGNMENT
  */
-public class LinkedList<E> { //this is my code for a linked list
+public class LinkedList<Integer> { //this is my code for a linked list
 
-    Node<E> head;   //i used my node class to include a head
-    Node<E> tail;   //and a tail
+    Node<Integer> head;   //i used my node class to include a head
+    Node<Integer> tail;   //and a tail
     int size;       //and as i add and remove items i keep track of the size so I don't have to iterate through the whole list at O(n) to figure it out
 
     public LinkedList() { //initializer with no argument to just set everything to null/0
@@ -27,37 +27,37 @@ public class LinkedList<E> { //this is my code for a linked list
         return this.size;
     }
     
-    public boolean add(E e) { //overloading add to just place a node at the end when no index is given
-        return(add(this.size, e));
+    public boolean add(int value) { //overloading add to just place a node at the end when no index is given
+        return(add(this.size, value));
     }
 
-    public boolean addNoDupes(E e){ //this is a special funtion I made to trim down the size of the successor array in case anyone added an edge multiple times
+    public boolean addNoDupes(int value){ //this is a special funtion I made to trim down the size of the successor array in case anyone added an edge multiple times
         if(this.size == 0){ //insert into empty linked list, this is O(c)
-            add(e);
+            add(value);
         }else{ //else iterate through list
-            Node<E> current = head;
+            Node<Integer> current = head;
             while(current != null){ //until i reach the end
-                if(current.getElement() == e){//if the element is already in the list, break
+                if(current.getNumber() == value){//if the number is already in the list, break
                     break;
                 }else{//else iterate
                     current = current.getNext();
                 }
             }
             if(current == null){ //if i reached the end of the list, it was not already there
-                add(e);  //add it to the list at the end
+                add(value);  //add it to the list at the end
                 return true;
             }
         }
         return false; //return that item wasn't added to list
     }
     
-    public boolean add(int index, E e) { //add a node at the specified index, handles special cases
+    public boolean add(int index, int value) { //add a node at the specified index, handles special cases
         
         if((index < 0)||(index > this.size)){
             return false; //return false for out of bounds indices
         }
         
-        Node<E> temp = new Node<E>(e);
+        Node<Integer> temp = new Node<Integer>(value);
         
         if(this.size == 0){ //inset into empty linked list, this is O(c)
             head = temp;
@@ -75,7 +75,7 @@ public class LinkedList<E> { //this is my code for a linked list
             tail = tail.getNext();
             tail.setNext(null);
         }else{ //else insert in middle of list, this is O(n) but I won't use this one in my topSorts
-            Node<E> reference = getNode(index);
+            Node<Integer> reference = getNode(index);
             temp.setNext(reference);
             temp.setPrev(reference.getPrev());
             reference.getPrev().setNext(temp);
@@ -86,11 +86,11 @@ public class LinkedList<E> { //this is my code for a linked list
         return true; //return true that operation was successful
     }
 
-    private Node<E> getNode(int index) { //this is leftover from my previous creation of a linked list class
+    private Node<Integer> getNode(int index) { //this is leftover from my previous creation of a linked list class
         if((index < 0) || (index > size)){  //this is O(n) but I never use it
             return null;
         }else{
-            Node<E> current = head;
+            Node<Integer> current = head;
             for(int i = 0; i < index; i++){
                 current = current.getNext();
             }
@@ -98,34 +98,34 @@ public class LinkedList<E> { //this is my code for a linked list
         }
     }
 
-    public E removeHead(){ //so I can remove the head, it calls my remove function using index 0
+    public int removeHead(){ //so I can remove the head, it calls my remove function using index 0
         return(remove(0)); //the remove function references the head node directly and there is no iteration, meaning it should be O(c)
     }
     
-    public E removeTail(){ //so I can remove the head, it calls my remove function using index this.size
+    public int removeTail(){ //so I can remove the head, it calls my remove function using index this.size
         return(remove(this.size)); //the remove function references the tail node directly and there is no iteration, meaning it should be O(c)
     }
     
-    public E remove(int index) { //removes a node at a given index
+    public int remove(int index) { //removes a node at a given index
         if((index < 0) || (index > size)){ //handle out of bounds cases
-            return null;
+            return -1;
         }
         
-        E toRemove = null;
+        int toRemove;
         
         if(this.size == 1){ //if there is only one item
-            toRemove = head.getElement();
+            toRemove = head.getNumber();
             head = null;
             tail = null;
         }else if(index == 0){ //to remove the head doesn't involve iterating, so it should be O(c)
-            toRemove = head.getElement();
+            toRemove = head.getNumber();
             head = head.getNext();
         }else if(index == size){ //to remove the tail doesn't involve iterating, so it should be O(c)
-            toRemove = tail.getElement();
+            toRemove = tail.getNumber();
             tail = tail.getPrev();
             tail.setNext(null);
         }else{ //else remove by index number
-            toRemove = getNode(index).getElement();
+            toRemove = getNode(index).getNumber();
             getNode(index-1).setNext(getNode(index).getNext());
         }
         
@@ -134,17 +134,17 @@ public class LinkedList<E> { //this is my code for a linked list
     }
 
     public String toString() {  //a to string function that iterates through my list and prints it, since this is a "reporting" feature i don't count it
-        Node<E> current = head;
+        Node<Integer> current = head;
         StringBuilder result = new StringBuilder();
         if (size == 0) {
             return "";
         }
         if (size == 1) {
-            return head.getElement().toString();
+            return String.valueOf(head.getNumber());
 
         } else {
             do {
-                result.append(current.getElement());
+                result.append(current.getNumber());
                 if(current.getNext() != null){
                     result.append(", ");
                 }
@@ -153,4 +153,5 @@ public class LinkedList<E> { //this is my code for a linked list
         }
         return result.toString();
     }
+    
 }
