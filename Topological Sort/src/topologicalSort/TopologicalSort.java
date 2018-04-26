@@ -5,8 +5,6 @@ package topologicalSort;
  * and open the template in the editor.
  */
 
-import java.util.Arrays;
-import java.util.Queue;
 
 /**
  *
@@ -135,9 +133,18 @@ public class TopologicalSort {
         }
     }
     
+    //this class has no testing function as the main serves as proof that it is working correctly
+    //main yields the correct solutions for my various practice problems
+    //I feel confident it will abstract and handle any properly set up problem subject to physical contraints (memory size, procesing time, etc.)
+
     public static void main(String[] args) {
-        // TODO code application logic here
+        // Test code here
         
+    	//Node testingNode = new Node();
+        //testingNode.testing();
+        //LinkedList testingList = new LinkedList();
+    	//testingList.testing();
+    	
         //these are some sample problems I came up with, the first 2 are small and doable hand to verify my work
         //the second 2 are larger ones that show my code properly creates the numbers of permutations for even large sets
         TopologicalSort one = new TopologicalSort(

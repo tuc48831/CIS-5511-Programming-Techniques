@@ -154,4 +154,27 @@ public class LinkedList<Integer> { //this is my code for a linked list
         return result.toString();
     }
     
+    public void testing() {
+    	//know my node should work
+    	//throughout this testing, will be using toString so that's implicitly testing it
+    	
+    	//test creating null linked list
+    	
+    	//test getsize on 0
+    	
+    	//test adding a value to the list
+    	
+    	//test getsize > 0
+    	
+    	//test getnode on the value i just added
+    	
+    	//test add no dupes
+    	
+    	//test add specific index
+    	
+    	//test removing a value from the list
+    	
+    	//test specific head/tail removal
+    	
+    }
 }

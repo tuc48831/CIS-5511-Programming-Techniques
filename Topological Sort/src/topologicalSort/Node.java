@@ -12,7 +12,7 @@ package topologicalSort;
  * I WROTE THISE CODE FOR A 2168 ASSIGNMENT
  * I AM JUST RE-USING IT
  * I WILL MAKE SURE TO RE-FAMILIARIZE MYSELF/COMMENT IT RELEVANT TO THIS ASSIGNMENT
- * @param <E>
+ * @param <Integer>
  */
 public class Node<Integer> { //this is a simple node class for my linked list
 
@@ -56,6 +56,51 @@ public class Node<Integer> { //this is a simple node class for my linked list
 	}
 	
 	public void printNode() {
-		System.out.println("The node is: " + String.valueOf(this.getNumber()));
+		System.out.print("The node is: " + String.valueOf(this.getNumber()));
+		if(this.next != null) {
+			System.out.print(" and it's next is: " + String.valueOf(this.next.getNumber()));
+		}
+		if(this.prev != null) {
+			System.out.print(" and it's prev is: " + String.valueOf(this.prev.getNumber()));
+		}
+		System.out.print("\n");
+	}
+	
+	public void testing() {
+		//test create a null node && test printing the node
+		System.out.println("creating node with no input");
+		Node testNode = new Node();
+		testNode.printNode();
+		testNode = null;
+		//test create node with values
+		System.out.println("creating first node with 0 as number");
+		testNode = new Node(0);
+		testNode.printNode();
+		//test setting the number
+		System.out.println("Setting node's number to 1 and printing it");
+		testNode.setNumber(1);
+		testNode.printNode();
+		
+		System.out.println("Setting node's number to 2 and printing it");
+		testNode.setNumber(2);
+		testNode.printNode();
+		//test getting the number
+		System.out.println("getNumber on first node should be 2 and is: " + String.valueOf(testNode.getNumber()));
+		//test making multiple nodes and setting next/prev
+		System.out.println("Creating a second node with the number 4");
+		Node secondNode = new Node(4);
+		secondNode.printNode();
+		
+		System.out.println("setting first node's next to the second node");
+		testNode.setNext(secondNode);
+		testNode.printNode();
+		
+		System.out.println("setting first node's prev to the second node");
+		testNode.setPrev(secondNode);
+		testNode.printNode();
+		//test get next/get prev
+		
+		
+		System.out.println("End of testing for Node");
 	}
 }
