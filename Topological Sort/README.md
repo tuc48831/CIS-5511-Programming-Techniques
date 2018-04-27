@@ -1,6 +1,6 @@
 # Topological Sort
 
-This is my code for a topological sort created in java. It uses a node and linked list to keep track of information about the problem and it prints up to the first 10 topological orderings it can find, and then it yields the total number of permutations as a check to prove the programs correctness for problems too large to check manually.
+This is my code for a topological sort created in java. It uses a node and linked list to keep track of information about the problem and it prints up to the first 25 topological orderings it can find, and then it yields the total number of permutations as a check to prove the programs correctness for problems too large to check manually.
 
 # Description of Problem
 
