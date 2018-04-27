@@ -154,7 +154,7 @@ public class TopologicalSort {
                 + "40\n"
                 + "41\n"
                 + "23\n"
-                + "13");
+                + "31");
         System.out.println("initialized one");
         one.topsorts();
         System.out.println("ran one, total number of permutations: " + one.numPerms);

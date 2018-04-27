@@ -20,7 +20,7 @@ My solution iterates from the lowest possible digit it could select by seeing wh
 
 This is continued recursively until there are no nodes remaining, and this sorted order is printed out. Once all the nodes are in the list, we need to backtrack and explore different permutations. This is done by taking the node we just added into the potential array, and moving it back, increasing the predecessor counts of any nodes that come after it, and potentially removing anything from the potential nodes list if their predecessor count increases to be greater than 0.
 
-My algorithm reads in a specifically formatted string to initialize the problem, for the example image above, the string would be: "6\n 52\n 50\n 40\n 41\n 23\n 13". The first number represents the number of nodes the problem should contain (where the first node is node 0, node 1, node 2, ..., node n up to n = 10), every number after the first represents an edge from the first digit to the second digit. The number 50 represents that node 5 has an edge to node 0 (Nodes are 0 indexed).
+My algorithm reads in a specifically formatted string to initialize the problem, for the example image above, the string would be: "6\n 52\n 50\n 40\n 41\n 23\n 31". The first number represents the number of nodes the problem should contain (where the first node is node 0, node 1, node 2, ..., node n up to n = 10), every number after the first represents an edge from the first digit to the second digit. The number 50 represents that node 5 has an edge to node 0 (Nodes are 0 indexed).
 
 # Results
 
