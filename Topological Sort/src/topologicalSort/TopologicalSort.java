@@ -167,8 +167,8 @@ public class TopologicalSort {
         System.out.println("ran two, total number of permutations: " + two.numPerms);
         
         TopologicalSort three = new TopologicalSort(
-                "10\n"
-                + "00");
+                "5\n");
+                //+ "00");
         System.out.println("initialized three");
         three.topsorts();
         System.out.println("ran three, total number of permutations: " + three.numPerms);
