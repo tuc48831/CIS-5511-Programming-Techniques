@@ -16,7 +16,7 @@ Garwick's algorithm and Modified Garwick's are relatively straightforward. As th
 
 Instead, my implementation involves allocating new space based on a formula:
 
-![Image](Formula for space allocation.png)
+![Image](Formula_for_space_allocation.png)
 
 In this formula, rho controls how we allocate the remaining slots of the table. A higher rho prioritizes allocating more space to the most recently growing stack, and a lower rho prioritizes off of the current size of the stacks.
 
